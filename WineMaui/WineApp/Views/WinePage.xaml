@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:WineApp.ViewModels"
+             xmlns:wineModels="clr-namespace:WineCode.Models;assembly=WineCode"
+             x:Class="WineApp.Views.WinePage"
+             x:DataType="viewModels:IWineViewModel"
+             Title="Wine Details">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
+
+            <!-- Wine Image -->
+            <Image Source="{Binding Wine.Image}" 
+                   WidthRequest="200" 
+                   HeightRequest="200" 
+                   Aspect="AspectFill" 
+                   HorizontalOptions="Center" />
+
+            <!-- Wine Details -->
+            <StackLayout Spacing="15" Padding="10">
+
+                <!-- Wine Name -->
+                <Label Text="{Binding Wine.Name}" 
+                       FontSize="24" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" />
+
+                <!-- Wine Description -->
+                <Label Text="{Binding Wine.Description}" 
+                       FontSize="16" 
+                       TextColor="Gray" 
+                       LineBreakMode="WordWrap"
+                       MaxLines="3" />
+
+                <!-- Wine Taste Profile -->
+                <Label Text="Taste Profile" FontAttributes="Bold" FontSize="18" />
+                <Label Text="{Binding Wine.TasteProfile}" 
+                       FontSize="14" 
+                       TextColor="DarkGray" />
+
+                <!-- Wine Price -->
+                <Label Text="Price" FontAttributes="Bold" FontSize="18" />
+                <Label Text="{Binding Wine.Price, StringFormat='Price: {0:C}'}" 
+                       FontSize="16" 
+                       TextColor="DarkGreen" />
+
+                <!-- Wine Country -->
+                <Label Text="Country" FontAttributes="Bold" FontSize="18" />
+                <Label Text="{Binding Wine.Country.Name}" 
+                       FontSize="14" 
+                       TextColor="DarkGray" />
+
+                <!-- Wine Categories -->
+                <Label Text="Categories" FontAttributes="Bold" FontSize="18" />
+                <CollectionView ItemsSource="{Binding Wine.Categories}" 
+                                HeightRequest="100" 
+                                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="wineModels:Category">
+                            <Label Text="{Binding Name}" 
+                                   FontSize="14" 
+                                   TextColor="Gray" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Wine Kind -->
+                <Label Text="Kind" FontAttributes="Bold" FontSize="18" />
+                <Label Text="{Binding Wine.Kind.Name}" 
+                       FontSize="14" 
+                       TextColor="DarkGray" />
+
+                <!-- Back Button -->
+                <Button Text="Back"
+                        Command="{Binding NavigateBackCommand}"
+                        BackgroundColor="DarkRed"
+                        TextColor="White" />
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
