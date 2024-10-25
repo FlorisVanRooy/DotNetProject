@@ -9,23 +9,24 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+            <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
 
                 <!-- Detected Recipe Info -->
                 <StackLayout Spacing="10" Padding="10">
                     <Label Text="Detected Recipe" 
-                           FontSize="22" 
+                           FontSize="24" 
                            FontAttributes="Bold" 
-                           HorizontalOptions="Center" />
+                           HorizontalOptions="Center" 
+                           TextColor="White" />
 
                     <Label Text="{Binding DetectedRecipe.Name}" 
-                           FontSize="18" 
-                           TextColor="LightGray"
+                           FontSize="20" 
+                           TextColor="White"
                            HorizontalOptions="Center" />
 
                     <Label Text="{Binding DetectedRecipe.Description}" 
-                           FontSize="14" 
-                           TextColor="Gray" 
+                           FontSize="16" 
+                           TextColor="White" 
                            HorizontalOptions="Center"
                            LineBreakMode="WordWrap" 
                            MaxLines="3" />
@@ -35,69 +36,60 @@
                 <CollectionView ItemsSource="{Binding DetectedRecipe.Wines}"
                                 Margin="20"
                                 SelectionMode="Single"
-                                BackgroundColor="LightGrey"
+                                BackgroundColor="Transparent"
                                 SelectedItem="{Binding SelectedWine}">
 
                     <!-- Define layout as vertical with spacing -->
                     <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="5" />
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="15" />
                     </CollectionView.ItemsLayout>
 
                     <!-- Define the appearance of each wine item -->
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="wineModels:Wine">
-                            <StackLayout Orientation="Horizontal" Padding="10">
+                            <StackLayout Orientation="Vertical" Padding="10"  Margin="0,5">
 
-                                <!-- Wine details -->
-                                    <StackLayout>
-                                        <Label Text="{Binding Name}" 
-                                           FontSize="18"
-                                           FontAttributes="Bold"
-                                           TextColor="Black" />
-                                        <Label Text="{Binding Description}" 
-                                           FontSize="14" 
-                                           TextColor="Gray" 
-                                           LineBreakMode="WordWrap" 
-                                           MaxLines="2" />
-                                        <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" 
-                                           FontSize="14" 
-                                           TextColor="DarkGreen" 
-                                           HorizontalOptions="End" />
-                                    </StackLayout>
-
+                                <Label Text="{Binding Name}" 
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="{Binding Description}" 
+                                       FontSize="14" 
+                                       TextColor="White" 
+                                       LineBreakMode="WordWrap" 
+                                       MaxLines="2" />
+                                <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" 
+                                       FontSize="18" 
+                                       TextColor="LightGreen" 
+                                       HorizontalOptions="End" />
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
                 <!-- Navigate to Wine Details -->
-                <HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Margin="10,20,10,0">
                     <Button Text="Go back" 
-                        Command="{Binding NavigateBackCommand}" 
-                        BackgroundColor="DarkRed" 
-                        TextColor="White"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        Padding="10"
-                        Margin="10,20,10,0" />
-                <Button Text="Go to Wine" 
-                        Command="{Binding NavigateToWineCommand}" 
-                        BackgroundColor="DarkRed" 
-                        TextColor="White"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        Padding="10"
-                        Margin="10,20,10,0" />
-                    <Button Text="Favorite Wine" 
-                        Command="{Binding ToggleFavoriteCommand}" 
-                        BackgroundColor="DarkRed" 
-                        TextColor="White"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        Padding="10"
-                        Margin="10,20,10,0" />
-                </HorizontalStackLayout>
+                            Command="{Binding NavigateBackCommand}" 
+                            BackgroundColor="#FF0266" 
+                            TextColor="White"
+                            FontSize="18"
+                            Padding="10" />
 
+                    <Button Text="Go to Wine" 
+                            Command="{Binding NavigateToWineCommand}" 
+                            BackgroundColor="#FF0266" 
+                            TextColor="White"
+                            FontSize="18"
+                            Padding="10" />
+
+                    <Button Text="Favorite Wine" 
+                            Command="{Binding ToggleFavoriteCommand}" 
+                            BackgroundColor="#FF0266" 
+                            TextColor="White"
+                            FontSize="18"
+                            Padding="10" />
+                </HorizontalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
     </ContentPage.Content>
