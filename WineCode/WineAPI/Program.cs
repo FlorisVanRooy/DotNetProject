@@ -13,13 +13,7 @@ builder.Services.AddDbContext<WineContext>(options => options.UseSqlServer(conne
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        // Enable reference handling to preserve object references
-        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-        // Optional: Set other options if needed
-        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-    });
+    ;
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -38,14 +32,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseAuthorization(); // Removed UseAuthentication()
+app.UseAuthentication(); // Removed UseAuthentication()
 
 app.MapControllers();
 
 using (var scope = app.Services.CreateScope())
 {
     var myContext = scope.ServiceProvider.GetRequiredService<WineContext>();
-    DbInitialiser.Initialize(myContext);
+    DbInitializer.Initialize(myContext);
 }
 
 app.Run();

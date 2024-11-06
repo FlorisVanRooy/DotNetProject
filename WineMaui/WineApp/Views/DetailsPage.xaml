@@ -18,6 +18,17 @@
                            FontAttributes="Bold" 
                            HorizontalOptions="Center" 
                            TextColor="White" />
+                    <Image Source="{Binding DetectedRecipe.Image}" 
+                           WidthRequest="200" 
+                           HeightRequest="200" 
+                           Aspect="AspectFill" 
+                           HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenLinkCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+
 
                     <Label Text="{Binding DetectedRecipe.Name}" 
                            FontSize="20" 

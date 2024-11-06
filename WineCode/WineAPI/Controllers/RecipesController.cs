@@ -60,7 +60,7 @@ namespace WineAPI.Controllers
                 {
                     query => query.Include(r => r.Wines).ThenInclude(w => w.Country),
                     query => query.Include(r => r.Wines).ThenInclude(w => w.Kind),
-                    query => query.Include(r => r.Wines).ThenInclude(w => w.Categories)
+                    query => query.Include(r => r.Wines).ThenInclude(w => w.Category)
                 }
             ).FirstOrDefault();
 

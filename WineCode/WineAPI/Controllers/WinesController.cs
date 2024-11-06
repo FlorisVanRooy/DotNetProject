@@ -37,7 +37,7 @@ namespace WineAPI.Controllers
                 {
                     w => w.Country,      // Include Country
                     w => w.Kind,          // Include Kind
-                    w => w.Categories,
+                    w => w.Category,
                 });
 
 

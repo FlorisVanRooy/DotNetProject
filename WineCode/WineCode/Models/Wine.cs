@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace WineCode.Models
 {
@@ -12,9 +13,14 @@ namespace WineCode.Models
         public string Link { get; set; } = string.Empty;
         public string Price { get; set; } = string.Empty;
 
+        // Foreign keys for Country, Category, and Kind
+        public int CountryId { get; set; }
+        public int CategoryId { get; set; }
+        public int KindId { get; set; }
+
         // Navigation properties
         public Country Country { get; set; }
-        public ICollection<Category> Categories { get; set; } = new List<Category>();
+        public Category Category { get; set; }
         public Kind Kind { get; set; }
 
         // Many-to-many relationship with Recipe

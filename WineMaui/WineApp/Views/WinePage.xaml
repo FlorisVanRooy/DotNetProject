@@ -52,18 +52,10 @@
                        TextColor="DarkGray" />
 
                 <!-- Wine Categories -->
-                <Label Text="Categories" FontAttributes="Bold" FontSize="18" />
-                <CollectionView ItemsSource="{Binding Wine.Categories}" 
-                                HeightRequest="100" 
-                                SelectionMode="None">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="wineModels:Category">
-                            <Label Text="{Binding Name}" 
-                                   FontSize="14" 
-                                   TextColor="Gray" />
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <Label Text="Category" FontAttributes="Bold" FontSize="18" />
+                <Label Text="{Binding Wine.Category.Name}" 
+                FontSize="14" 
+                TextColor="DarkGray" />     
 
                 <!-- Wine Kind -->
                 <Label Text="Kind" FontAttributes="Bold" FontSize="18" />

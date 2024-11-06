@@ -16,5 +16,6 @@ namespace WineApp.ViewModels
         ICommand ToggleFavoriteCommand { get; set; }
         ICommand NavigateToWineCommand { get; set; }
         ICommand NavigateBackCommand { get; set; }
+        ICommand OpenLinkCommand { get; set; }
     }
 }
