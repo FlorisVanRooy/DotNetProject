@@ -85,17 +85,24 @@ namespace WineApp.ViewModels
             // Custom Vision API call
             var result = await CustomVisionService.ClassifyImageAsync(new MemoryStream(resizedPhoto));
 
-            if (result.TagName.Equals("Negative"))
-            {
-                ErrorMessage = "This is not a recognized recipe.";
-                PictureChosen = false;
+            if (result.TagName != null) { 
+                if (result.TagName.Equals("Negative"))
+                {
+                    ErrorMessage = "This is not a recognized recipe.";
+                    PictureChosen = false;
+                }
+                else
+                {
+                    DetectedRecipe = await ApiService<Recipe>.GetAsync($"recipes/{result.TagName}");
+                    PictureChosen = true;
+                    ErrorMessage = "";
+                };
             }
             else
             {
-                DetectedRecipe = await ApiService<Recipe>.GetAsync($"recipes/{result.TagName}");
-                PictureChosen = true;
-                ErrorMessage = "";
-            };
+                ErrorMessage = "Please upload a picture.";
+                PictureChosen = false;
+            }
         }
     }
 }

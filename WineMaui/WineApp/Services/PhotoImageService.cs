@@ -15,7 +15,10 @@ namespace WineApp.Services
         public static async Task<byte[]> ResizePhotoStreamAsync(FileResult photo)
         {
             byte[]? result = null;
-
+            if (photo == null)
+            {
+                return Array.Empty<byte>();
+            }
             using (var stream = await photo.OpenReadAsync())
             {
                 if (stream.Length > ImageMaxSizeBytes)

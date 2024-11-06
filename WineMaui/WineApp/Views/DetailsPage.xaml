@@ -49,10 +49,20 @@
                         <DataTemplate x:DataType="wineModels:Wine">
                             <StackLayout Orientation="Vertical" Padding="10"  Margin="0,5">
 
-                                <Label Text="{Binding Name}" 
-                                       FontSize="18"
-                                       FontAttributes="Bold"
-                                       TextColor="White" />
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Name}" 
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           VerticalOptions="Center" />
+
+                                    <!-- Star Icon -->
+                                    <Label Text="  ★"
+                           FontSize="18"
+                           VerticalOptions="Center"
+                           TextColor="Gold"
+                           IsVisible="{Binding Favorite}" />
+                                </StackLayout>
                                 <Label Text="{Binding Description}" 
                                        FontSize="14" 
                                        TextColor="White" 
